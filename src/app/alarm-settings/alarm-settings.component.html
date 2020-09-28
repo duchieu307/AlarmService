@@ -1,4 +1,4 @@
-<form [formGroup]="setAlarmForm">
+<form [formGroup]="alarmForm">
   <h1>Tao lich tao lich</h1>
   <div class="form-group">
     <label class="control-label">Tên sự kiện</label>
@@ -24,7 +24,6 @@
       <div class="mb-5" *ngFor ='let moment of moments'>
         <label class="control-label">Thời điểm {{moments.indexOf(moment) + 1}}</label>
         <timepicker
-          name
           formControlName="formTime"
           [showSeconds]="showSec"
         ></timepicker>
