@@ -21,14 +21,18 @@
     </div>
     <div class="col-md-6">
       <h3>Chọn thời gian</h3>
-      <div class="mb-5" *ngFor ='let moment of moments'>
-        <label class="control-label">Thời điểm {{moments.indexOf(moment) + 1}}</label>
+      <div class="mb-5" *ngFor="let moment of numberOfMoment">
+        <label class="control-label"
+          >Thời điểm {{ numberOfMoment.indexOf(moment) + 1 }}</label
+        >
         <timepicker
           formControlName="formTime"
           [showSeconds]="showSec"
         ></timepicker>
       </div>
-      Thêm thời điểm
+      <span class="add-moment-button" (click)="addMoment()"
+        >Thêm thời điểm</span
+      >
     </div>
   </div>
 
@@ -54,11 +58,12 @@
     </label>
   </div>
 
-  <div *ngIf="repeatUi" class="form-group">
+  <!-- Lặp lại giờ phút giây -->
+  <div *ngIf="repeatUi" class="form-group mt-3">
     <div class="row">
       Sau này sửa thành giống cái spinner của timepicker cho đẹp
     </div>
-    <div class="form-inline">
+    <div class="form-inline mt-2">
       <div class="col row">
         Mỗi
         <input
@@ -87,6 +92,68 @@
         giây
       </div>
     </div>
+  </div>
+
+  <!-- Lặp lại theo ngày -->
+  <div *ngIf="repeatUi" class="form-group mt-3">
+    <div class="row">
+      <h3>Lặp lại theo ngày</h3>
+    </div>
+    <div class="form-inline mt-2">
+      <div class="col row">
+        <span>Không lặp</span>
+        <input
+          class="ml-2 mt-2"
+          type="radio"
+          value="false"
+          formControlName="repeatDay"
+        />
+      </div>
+      <div class="col row">
+        <span>Hàng ngày</span>
+        <input
+          class="ml-2 mt-2"
+          type="radio"
+          value="1"
+          formControlName="repeatDay"
+        />
+      </div>
+      <div class="col row">
+        <span>Mỗi</span>
+        <input class="form-control" type="number" formControlName="repeatDay" />
+        <span>ngày</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="repeatUi" class="row mb-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="btn-group button-repeat" dropdown>
+        <button
+          id="button-basic"
+          dropdownToggle
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          aria-controls="dropdown-basic"
+        >
+          Lặp lại <span class="caret"></span>
+        </button>
+        <ul
+          id="dropdown-basic"
+          *dropdownMenu
+          class="dropdown-menu"
+          role="menu"
+          aria-labelledby="button-basic"
+        >
+          <li role="menuitem"><a class="dropdown-item" href="#">Theo thời gian</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Hàng ngày</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Hàng tuần</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Hai tuần một lần</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Hàng tháng</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
   </div>
 
   <pre

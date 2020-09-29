@@ -8,16 +8,11 @@ import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 })
 export class AlarmSettingsComponent implements OnInit {
   myTime;
-  moments = [
-    {
-      name: 'moment1',
-      time: '',
-    },
-  ];
-  numberOfMoment = 1;
+  momentsForSaving = [];
+  numberOfMoment = [1];
   showMin: boolean = true;
   showSec: boolean = true;
-  repeatUi: boolean = false;
+  repeatUi: boolean = true;
   alarmForm: FormGroup;
 
   // setAlarmForm = new FormGroup({
@@ -28,6 +23,9 @@ export class AlarmSettingsComponent implements OnInit {
   //   repeatHour : new FormControl(),
   //   repeatMinute : new FormControl(),
   // });
+
+  constructor(private formBuilder: FormBuilder) {}
+
   createAlarmForm() {
     this.alarmForm = this.formBuilder.group({
       eventName: [''],
@@ -36,15 +34,14 @@ export class AlarmSettingsComponent implements OnInit {
       repeatHour: [0],
       repeatMinute: [0],
       formTime: [new Date()],
+      repeatDay: [],
     });
   }
-
-  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     console.log((this.myTime = new Date()));
     this.myTime = new Date();
-    this.createAlarmForm()
+    this.createAlarmForm();
   }
 
   turnOnRepeatUi() {
@@ -54,4 +51,18 @@ export class AlarmSettingsComponent implements OnInit {
   turnOffRepeatUi() {
     this.repeatUi = false;
   }
+
+  // đang lưu time có cả ngày tháng năm
+  addMoment() {
+    let newObjMoment= {
+      name : 'moment' + this.numberOfMoment.length,
+      time : this.alarmForm.get('formTime').value.toLocaleTimeString('it-IT')
+    };
+    this.numberOfMoment.push(1);
+    this.momentsForSaving.push(newObjMoment);
+    console.log(this.momentsForSaving);
+    
+  }
+
+
 }

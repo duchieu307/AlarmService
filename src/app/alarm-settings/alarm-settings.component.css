@@ -1,0 +1,16 @@
+.add-moment-button{
+    cursor: pointer;
+}
+
+.add-moment-button:hover{
+    border-bottom: 1px solid red;
+}
+
+.button-repeat{
+display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown-menu{
+    width: 100%;
+}
