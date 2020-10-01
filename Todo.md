@@ -22,7 +22,10 @@ Todo
         + Lưu dưới dạng để hiện thị (done)
         + Lưu dưới dạng để bắt event (milisecond à ?) Đợi logic lưu sau
     - Xử lý các sự kiện lặp lại như calendar của Apple
-        + Xem lại đoạn thêm thời điểm vấn đề xảy ra khi sự kiện xảy ra ở 2 thời điểm khác nhau, lúc này lặp theo thời gian sẽ tính sao ?
+        + Dùng modals để hiển thị các option khác nhau 
+            * Viết hàm nhận vào template để hiện thị modals đồng thời checked được vào radio
+        + Lời nhắc lịch 
+        + Xem lại đoạn thêm thời điểm vấn đề xảy ra khi sự kiện xảy ra ở 2 thời điểm khác nhau, lúc này lặp theo thời gian sẽ tính sao ? (Chắc phải chia đoạn rồi)
         + Thêm thời gian kết thúc cho sự kiện lặp theo thời gian
     - Tạo 1 form hoàn chỉnh
     - Tạo create cơ bản

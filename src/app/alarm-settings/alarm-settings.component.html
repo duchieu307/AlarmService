@@ -58,42 +58,6 @@
     </label>
   </div>
 
-  <!-- Lặp lại giờ phút giây -->
-  <div *ngIf="repeatUi" class="form-group mt-3">
-    <div class="row">
-      Sau này sửa thành giống cái spinner của timepicker cho đẹp
-    </div>
-    <div class="form-inline mt-2">
-      <div class="col row">
-        Mỗi
-        <input
-          class="form-control"
-          type="number"
-          formControlName="repeatHour"
-        />
-        giờ
-      </div>
-      <div class="col row">
-        Mỗi
-        <input
-          class="form-control"
-          type="number"
-          formControlName="repeatMinute"
-        />
-        phút
-      </div>
-      <div class="col row">
-        Mỗi
-        <input
-          class="form-control"
-          type="number"
-          formControlName="repeatSecond"
-        />
-        giây
-      </div>
-    </div>
-  </div>
-
   <!-- Lặp lại theo ngày -->
   <div *ngIf="repeatUi" class="form-group mt-3">
     <div class="row">
@@ -145,17 +109,196 @@
           role="menu"
           aria-labelledby="button-basic"
         >
-          <li role="menuitem"><a class="dropdown-item" href="#">Theo thời gian</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">Hàng ngày</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">Hàng tuần</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">Hai tuần một lần</a></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">Hàng tháng</a></li>
+          <li role="menuitem">
+            <label for="repeat-time">
+              <button
+                class="btn btn-primary dropdown-item"
+                (click)="openModal(template)"
+              >
+                Theo thời gian
+              </button>
+              <input
+                id="repeat-time"
+                class="repeat-action"
+                type="radio"
+                formControlName="repeatAction"
+                name="repeatAction"
+                value="time"
+              />
+            </label>
+          </li>
+          <li role="menuitem">
+            <label for="repeat-daily" class="btn btn-primary dropdown-item">
+              Hàng ngày
+              <input
+                id="repeat-daily"
+                class="repeat-action"
+                type="radio"
+                formControlName="repeatAction"
+                name="repeatAction"
+                value="daily"
+              />
+            </label>
+          </li>
+          <li role="menuitem">
+            <label for="repeat-weekly" class="btn btn-primary dropdown-item">
+              Hàng tuần
+              <input
+                id="repeat-weekly"
+                class="repeat-action"
+                type="radio"
+                formControlName="repeatAction"
+                name="repeatAction"
+                value="weekly"
+              />
+            </label>
+          </li>
+          <li role="menuitem">
+            <label for="repeat-twoWeek" class="btn btn-primary dropdown-item">
+              Hai tuần một lần
+              <input
+                id="repeat-twoWeek"
+                class="repeat-action"
+                type="radio"
+                formControlName="repeatAction"
+                name="repeatAction"
+                value="twoWeek"
+              />
+            </label>
+          </li>
+          <li role="menuitem">
+            <label for="repeat-mothly" class="btn btn-primary dropdown-item">
+              Hàng tháng
+              <input
+                id="repeat-monthly"
+                class="repeat-action"
+                type="radio"
+                name="repeatAction"
+                formControlName="repeatAction"
+                value="monthly"
+              />
+            </label>
+          </li>
+          <li role="menuitem">
+            <label for="repeat-custom" class="btn btn-primary dropdown-item">
+              Tùy chỉnh
+              <input
+                id="repeat-custom"
+                class="repeat-action"
+                type="radio"
+                formControlName="repeatAction"
+                name="repeatAction"
+                value="custom"
+              />
+            </label>
+          </li>
         </ul>
       </div>
     </div>
     <div class="col-md-3"></div>
   </div>
 
+  <!-- Modals cho lặp lại theo ngày -->
+  <!-- <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Large modal</h4>
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="modalRef.hide()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body form-group mt-3">
+      <div class="row">
+        Sau này sửa thành giống cái spinner của timepicker cho đẹp
+      </div>
+      <div class="form-inline mt-2">
+        <div class="col">
+          <span>Mỗi</span>
+          <input
+            class="form-control"
+            type="number"
+            formControlName="repeatHour"
+          />
+          <span>giờ</span>
+        </div>
+        <div class="col">
+          <span>Mỗi</span>
+          <input
+            class="form-control"
+            type="number"
+            formControlName="repeatMinute"
+          />
+          <span>phút</span>
+        </div>
+        <div class="col">
+          <span>Mỗi</span>
+          <input
+            class="form-control"
+            type="number"
+            formControlName="repeatSecond"
+          />
+          <span>giây</span>
+        </div>
+      </div>
+    </div>
+  </ng-template> -->
+  <button type="button" class="btn btn-primary" (click)="openModal(template)">
+    Create template modal
+  </button>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="modalRef.hide()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body form-group mt-3">
+      <div class="row">
+        Sau này sửa thành giống cái spinner của timepicker cho đẹp
+      </div>
+      <div class="form-inline mt-2">
+        <div class="col">
+          <span>Mỗi</span>
+          <input
+            class="form-control"
+            type="number"
+            formControlName="repeatHour"
+          />
+          <span>giờ</span>
+        </div>
+        <div class="col">
+          <span>Mỗi</span>
+          <input
+            class="form-control"
+            type="number"
+            formControlName="repeatMinute"
+          />
+          <span>phút</span>
+        </div>
+        <div class="col">
+          <span>Mỗi</span>
+          <input
+            class="form-control"
+            type="number"
+            formControlName="repeatSecond"
+          />
+          <span>giây</span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <p>Sau này sẽ là cái nhắc lại trước khi submit</p>
   <pre
     class="alert alert-info"
   >Time is: {{myTime}}<br>showMinutes: {{showMin}}<br>showSeconds: {{showSec}}</pre>

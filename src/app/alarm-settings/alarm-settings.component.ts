@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 
 @Component({
   selector: 'app-alarm-settings',
@@ -14,17 +16,13 @@ export class AlarmSettingsComponent implements OnInit {
   showSec: boolean = true;
   repeatUi: boolean = true;
   alarmForm: FormGroup;
+  modalRef: BsModalRef | null;
 
-  // setAlarmForm = new FormGroup({
-  //   eventName : new FormControl(''),
-  //   formTime : new FormControl(new Date()),
-  //   repeat : new FormControl(),
-  //   repeatSecond : new FormControl(),
-  //   repeatHour : new FormControl(),
-  //   repeatMinute : new FormControl(),
-  // });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private modalService: BsModalService
+  ) {}
 
   createAlarmForm() {
     this.alarmForm = this.formBuilder.group({
@@ -54,15 +52,20 @@ export class AlarmSettingsComponent implements OnInit {
 
   // đang lưu time có cả ngày tháng năm
   addMoment() {
-    let newObjMoment= {
-      name : 'moment' + this.numberOfMoment.length,
-      time : this.alarmForm.get('formTime').value.toLocaleTimeString('it-IT')
+    let newObjMoment = {
+      name: 'moment' + this.numberOfMoment.length,
+      time: this.alarmForm.get('formTime').value.toLocaleTimeString('it-IT'),
     };
     this.numberOfMoment.push(1);
     this.momentsForSaving.push(newObjMoment);
     console.log(this.momentsForSaving);
-    
   }
 
+  openModal(template: TemplateRef<any>) {
+    // event.preventDefault();
+    console.log(this.modalRef);
+    this.modalRef = this.modalService.show(template);
+    event.stopPropagation();
+  }
 
 }
