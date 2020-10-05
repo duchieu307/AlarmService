@@ -22,12 +22,12 @@ Todo
         + Lưu dưới dạng để hiện thị (done)
         + Lưu dưới dạng để bắt event (milisecond à ?) Đợi logic lưu sau
     - Xử lý các sự kiện lặp lại như calendar của Apple
-        + Dùng modals để hiển thị các option khác nhau 
-            * Viết hàm nhận vào template để hiện thị modals đồng thời checked được vào radio
-        + Lời nhắc lịch 
+        + Dùng modals để hiển thị các option khác nhau (done)
+        + Hoàn thành cái tùy chính cho tháng
         + Xem lại đoạn thêm thời điểm vấn đề xảy ra khi sự kiện xảy ra ở 2 thời điểm khác nhau, lúc này lặp theo thời gian sẽ tính sao ? (Chắc phải chia đoạn rồi)
-        + Thêm thời gian kết thúc cho sự kiện lặp theo thời gian
+        + Thêm thời gian kết thúc cho sự kiện lặp theo thời gian (option)
     - Tạo 1 form hoàn chỉnh
+        + Lời nhắc lịch
     - Tạo create cơ bản
 3. Tạo data cơ bản với redux, action là create 
 4. Update tempolary data với các action  

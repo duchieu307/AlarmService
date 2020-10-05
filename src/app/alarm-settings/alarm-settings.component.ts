@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
-
 @Component({
   selector: 'app-alarm-settings',
   templateUrl: './alarm-settings.component.html',
@@ -17,7 +16,7 @@ export class AlarmSettingsComponent implements OnInit {
   repeatUi: boolean = true;
   alarmForm: FormGroup;
   modalRef: BsModalRef | null;
-
+  customRepeatUi ;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,6 +32,8 @@ export class AlarmSettingsComponent implements OnInit {
       repeatMinute: [0],
       formTime: [new Date()],
       repeatDay: [],
+      repeatAction: [],
+      customRepeat: []
     });
   }
 
@@ -63,9 +64,13 @@ export class AlarmSettingsComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     // event.preventDefault();
-    console.log(this.modalRef);
-    this.modalRef = this.modalService.show(template);
-    event.stopPropagation();
+    this.modalRef = this.modalService.show(template, { class: 'modal-lg' });
+    // event.stopPropagation();
+  }
+
+  testSwitch(){
+    this.customRepeatUi = this.alarmForm.get('customRepeat').value;
+    console.log(this.customRepeatUi);
   }
 
 }

@@ -110,14 +110,10 @@
           aria-labelledby="button-basic"
         >
           <li role="menuitem">
-            <label for="repeat-time">
-              <button
-                class="btn btn-primary dropdown-item"
-                (click)="openModal(template)"
-              >
-                Theo thời gian
-              </button>
+            <label for="repeat-time" class="btn btn-primary dropdown-item">
+              Theo thời gian
               <input
+                (click)="openModal(template)"
                 id="repeat-time"
                 class="repeat-action"
                 type="radio"
@@ -183,6 +179,7 @@
             <label for="repeat-custom" class="btn btn-primary dropdown-item">
               Tùy chỉnh
               <input
+                (click)="openModal(template2)"
                 id="repeat-custom"
                 class="repeat-action"
                 type="radio"
@@ -198,61 +195,10 @@
     <div class="col-md-3"></div>
   </div>
 
-  <!-- Modals cho lặp lại theo ngày -->
-  <!-- <ng-template #template>
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">Large modal</h4>
-      <button
-        type="button"
-        class="close pull-right"
-        aria-label="Close"
-        (click)="modalRef.hide()"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body form-group mt-3">
-      <div class="row">
-        Sau này sửa thành giống cái spinner của timepicker cho đẹp
-      </div>
-      <div class="form-inline mt-2">
-        <div class="col">
-          <span>Mỗi</span>
-          <input
-            class="form-control"
-            type="number"
-            formControlName="repeatHour"
-          />
-          <span>giờ</span>
-        </div>
-        <div class="col">
-          <span>Mỗi</span>
-          <input
-            class="form-control"
-            type="number"
-            formControlName="repeatMinute"
-          />
-          <span>phút</span>
-        </div>
-        <div class="col">
-          <span>Mỗi</span>
-          <input
-            class="form-control"
-            type="number"
-            formControlName="repeatSecond"
-          />
-          <span>giây</span>
-        </div>
-      </div>
-    </div>
-  </ng-template> -->
-  <button type="button" class="btn btn-primary" (click)="openModal(template)">
-    Create template modal
-  </button>
-
+  <!-- Modal cho lặp lại theo thời gian -->
   <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Modal</h4>
+      <h4 class="modal-title pull-left">Lặp lại theo thời gian</h4>
       <button
         type="button"
         class="close pull-right"
@@ -294,6 +240,217 @@
           />
           <span>giây</span>
         </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- Modal cho các loại tùy chỉnh -->
+  <ng-template #template2>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Tùy chỉnh</h4>
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="modalRef.hide()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-6">Tần suất</div>
+        <div class="col-md-6">
+          <div class="btn-group button-repeat" dropdown>
+            <button
+              id="button-basic"
+              dropdownToggle
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic"
+            >
+              Chọn tần suất <span class="caret"></span>
+            </button>
+            <ul
+              id="dropdown-basic"
+              *dropdownMenu
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="button-basic"
+            >
+              <li role="menuitem">
+                <label for="custom-daily" class="btn btn-primary dropdown-item">
+                  Hàng ngày
+                  <input
+                    (change)="testSwitch()"
+                    id="custom-daily"
+                    class="repeat-action"
+                    type="radio"
+                    formControlName="customRepeat"
+                    name="customRepeat"
+                    value="daily"
+                  />
+                </label>
+              </li>
+              <li role="menuitem">
+                <label
+                  for="custom-weekly"
+                  class="btn btn-primary dropdown-item"
+                >
+                  Hàng tuần
+                  <input
+                    (change)="testSwitch()"
+                    id="custom-weekly"
+                    class="repeat-action"
+                    type="radio"
+                    formControlName="customRepeat"
+                    name="customRepeat"
+                    value="weekly"
+                  />
+                </label>
+              </li>
+              <li role="menuitem">
+                <label
+                  for="custom-monthly"
+                  class="btn btn-primary dropdown-item"
+                >
+                  Hàng tháng
+                  <input
+                    (change)="testSwitch()"
+                    id="custom-monthly"
+                    class="repeat-action"
+                    type="radio"
+                    formControlName="customRepeat"
+                    name="customRepeat"
+                    value="monthly"
+                  />
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3" [ngSwitch]="customRepeatUi">
+        <ng-container *ngSwitchCase="'daily'">
+          <div class="col-md-6">Cứ</div>
+          <div class="col-md-6 input-group">
+            <input
+              class="form-control"
+              type="number"
+              formControlName="repeatDay"
+            />
+            <span>ngày</span>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'weekly'">
+          <div class="col-md-6">Cứ</div>
+          <div class="col-md-6">
+            <div class="row input-group">
+              <input
+                class="form-control"
+                type="number"
+                formControlName="repeatWeek"
+              />
+              <span>tuần</span>
+            </div>
+            <div class="mt-2 ml-2 row">
+              <div class="col">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox1"
+                  value="Monday"
+                />
+                <label class="form-check-label" for="inlineCheckbox1"
+                  >Thứ hai</label
+                >
+              </div>
+              <div class="col">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox2"
+                  value="Tuesday"
+                />
+                <label class="form-check-label" for="inlineCheckbox2"
+                  >Thứ ba</label
+                >
+              </div>
+              <div class="col">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox3"
+                  value="Wednesday"
+                />
+                <label class="form-check-label" for="inlineCheckbox3"
+                  >Thứ tư</label
+                >
+              </div>
+            </div>
+            <div class="mt-2 ml-2 row">
+              <div class="col">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox4"
+                  value="Thursday"
+                />
+                <label class="form-check-label" for="inlineCheckbox4"
+                  >Thứ năm</label
+                >
+              </div>
+              <div class="col">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox5"
+                  value="Friday"
+                />
+                <label class="form-check-label" for="inlineCheckbox5"
+                  >Thứ sáu</label
+                >
+              </div>
+              <div class="col">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox1"
+                  value="Saturday"
+                />
+                <label class="form-check-label" for="inlineCheckbox6"
+                  >Thứ bảy</label
+                >
+              </div>
+            </div>
+            <div class="mt-2 ml-2 row">
+              <div class="col">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox1"
+                  value="Sunday"
+                />
+                <label class="form-check-label" for="inlineCheckbox7"
+                  >Chủ nhật</label
+                >
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'monthly'">
+          <div class="col-md-6">Cứ</div>
+          <div class="col-md-6">
+            <div class="row input-group">
+              <input
+                class="form-control"
+                type="number"
+                formControlName="repeatMonth"
+              />
+              <span>tháng</span>
+            </div>
+          </div>
+        </ng-container>
       </div>
     </div>
   </ng-template>

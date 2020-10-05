@@ -18,3 +18,29 @@ display: flex;
 /* .repeat-action{
     display: none;
 } */
+
+.input-group{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+}
+
+.input-group input {
+    position:relative;
+    width: 100%;
+    z-index: 3;
+}
+
+.input-group span {
+    position: absolute;
+    right: 5%;
+    top: 15%;
+    z-index: 4;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
