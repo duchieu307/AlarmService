@@ -44,8 +44,8 @@
         type="radio"
         value="false"
         formControlName="repeat"
-        checked="checked"
-      />Không lặp lại
+        checked
+      >Không lặp lại
     </label>
     <label class="radio-inline mr-4">
       <input
@@ -54,42 +54,11 @@
         type="radio"
         value="true"
         formControlName="repeat"
-      />Lặp lại
+      >Lặp lại
     </label>
   </div>
 
-  <!-- Lặp lại theo ngày -->
-  <div *ngIf="repeatUi" class="form-group mt-3">
-    <div class="row">
-      <h3>Lặp lại theo ngày</h3>
-    </div>
-    <div class="form-inline mt-2">
-      <div class="col row">
-        <span>Không lặp</span>
-        <input
-          class="ml-2 mt-2"
-          type="radio"
-          value="false"
-          formControlName="repeatDay"
-        />
-      </div>
-      <div class="col row">
-        <span>Hàng ngày</span>
-        <input
-          class="ml-2 mt-2"
-          type="radio"
-          value="1"
-          formControlName="repeatDay"
-        />
-      </div>
-      <div class="col row">
-        <span>Mỗi</span>
-        <input class="form-control" type="number" formControlName="repeatDay" />
-        <span>ngày</span>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="repeatUi" class="row mb-5">
+  <div *ngIf="repeatUi" class="row mb-5 select-custom">
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="btn-group button-repeat" dropdown>
@@ -282,7 +251,7 @@
                 <label for="custom-daily" class="btn btn-primary dropdown-item">
                   Hàng ngày
                   <input
-                    (change)="testSwitch()"
+                    (change)="switchCustomUi()"
                     id="custom-daily"
                     class="repeat-action"
                     type="radio"
@@ -299,7 +268,7 @@
                 >
                   Hàng tuần
                   <input
-                    (change)="testSwitch()"
+                    (change)="switchCustomUi()"
                     id="custom-weekly"
                     class="repeat-action"
                     type="radio"
@@ -316,7 +285,7 @@
                 >
                   Hàng tháng
                   <input
-                    (change)="testSwitch()"
+                    (change)="switchCustomUi()"
                     id="custom-monthly"
                     class="repeat-action"
                     type="radio"
@@ -448,6 +417,145 @@
                 formControlName="repeatMonth"
               />
               <span>tháng</span>
+            </div>
+            <div class="mt-2">
+              Chọn các ngày trong tháng
+              <table class="table text-center custom-datepicker">
+                <tbody>
+                  <tr>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="1" />
+                      <span>1</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="2" />
+                      <span>2</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="3" />
+                      <span>3</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="4" />
+                      <span>4</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="5" />
+                      <span>5</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="6" />
+                      <span>6</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="7" />
+                      <span>7</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="8" />
+                      <span>8</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="9" />
+                      <span>9</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="10" />
+                      <span>10</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="11" />
+                      <span>11</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="12" />
+                      <span>12</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="13" />
+                      <span>13</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="14" />
+                      <span>14</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="15" />
+                      <span>15</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="16" />
+                      <span>16</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="17" />
+                      <span>17</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="18" />
+                      <span>18</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="19" />
+                      <span>19</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="20" />
+                      <span>20</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="21" />
+                      <span>21</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="22" />
+                      <span>22</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="23" />
+                      <span>23</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="24" />
+                      <span>24</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="25" />
+                      <span>25</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="26" />
+                      <span>26</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="27" />
+                      <span>27</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="28" />
+                      <span>28</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="29" />
+                      <span>29</span>
+                    </td>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="30" />
+                      <span>30</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td (click)="testEvent($event)">
+                      <input type="checkbox" name="dayOfMonth" value="31" />
+                      <span>31</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </ng-container>

@@ -21,11 +21,12 @@ Todo
     - Lưu thời gian
         + Lưu dưới dạng để hiện thị (done)
         + Lưu dưới dạng để bắt event (milisecond à ?) Đợi logic lưu sau
-    - Xử lý các sự kiện lặp lại như calendar của Apple
+    - Xử lý các sự kiện lặp lại như calendar của Apple (done)
         + Dùng modals để hiển thị các option khác nhau (done)
-        + Hoàn thành cái tùy chính cho tháng
+        + Hoàn thành cái tùy chính cho tháng (done)
         + Xem lại đoạn thêm thời điểm vấn đề xảy ra khi sự kiện xảy ra ở 2 thời điểm khác nhau, lúc này lặp theo thời gian sẽ tính sao ? (Chắc phải chia đoạn rồi)
         + Thêm thời gian kết thúc cho sự kiện lặp theo thời gian (option)
+    - Xong giao dien co ban roi 
     - Tạo 1 form hoàn chỉnh
         + Lời nhắc lịch
     - Tạo create cơ bản

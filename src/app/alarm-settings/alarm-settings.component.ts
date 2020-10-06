@@ -13,7 +13,7 @@ export class AlarmSettingsComponent implements OnInit {
   numberOfMoment = [1];
   showMin: boolean = true;
   showSec: boolean = true;
-  repeatUi: boolean = true;
+  repeatUi: boolean = false;
   alarmForm: FormGroup;
   modalRef: BsModalRef | null;
   customRepeatUi ;
@@ -33,7 +33,9 @@ export class AlarmSettingsComponent implements OnInit {
       formTime: [new Date()],
       repeatDay: [],
       repeatAction: [],
-      customRepeat: []
+      customRepeat: [],
+      repeatWeek: [],
+      repeatMonth: []
     });
   }
 
@@ -68,9 +70,23 @@ export class AlarmSettingsComponent implements OnInit {
     // event.stopPropagation();
   }
 
-  testSwitch(){
+  switchCustomUi(){
     this.customRepeatUi = this.alarmForm.get('customRepeat').value;
-    console.log(this.customRepeatUi);
   }
 
+  // dang loi dcm
+  testEvent(event){
+    // let check = event.target.querySelector('input[type=checkbox]');
+    let check = event.target;
+    // check.checked = !check.checked
+    if (check.tagName === 'SPAN'){
+      check = check.parentNode;
+      check = check.querySelector('input[type=checkbox]');
+      check.checked = !check.checked;
+    } else {
+      check = event.target.querySelector('input[type=checkbox]');
+      check.checked = !check.checked;
+      console.log(check.checked);
+    }
+  }
 }

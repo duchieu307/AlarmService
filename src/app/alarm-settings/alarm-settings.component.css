@@ -15,9 +15,10 @@ display: flex;
     width: 100%;
 }
 
-/* .repeat-action{
+
+.repeat-action{
     display: none;
-} */
+}
 
 .input-group{
     position: relative;
@@ -43,4 +44,39 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.custom-datepicker{
+    table-layout: fixed;
+}
+
+.custom-datepicker td{
+    position: relative;
+}
+
+.custom-datepicker td:hover span{
+    width: 160%;
+    display: block;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+
+}
+
+.custom-datepicker td input[type=checkbox]:checked ~ span{
+    width: 160%;
+    display: block;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+}
+
+.custom-datepicker input[type=checkbox]{
+    display: none;
+}
+
+.select-custom input {
+    display: none;
 }
